@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwmrg74wbeote"]
+
+[ext_resource type="Theme" uid="uid://c2pybm6ysbem3" path="res://tasks_room.tres" id="1_7w2i3"]
+[ext_resource type="Script" path="res://Scenes/LevelUpRoom/LevelUpRoom.gd" id="1_we2ch"]
+[ext_resource type="Texture2D" uid="uid://dea653ua0jp8o" path="res://icon.svg" id="2_00bik"]
+
+[sub_resource type="Gradient" id="Gradient_qaynk"]
+offsets = PackedFloat32Array(0.218543, 0.827815)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[node name="LevelUpRoom" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_7w2i3")
+script = ExtResource("1_we2ch")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(538, 285)
+emitting = false
+amount = 40
+lifetime = 5.0
+randomness = 0.5
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector2(0, -1)
+spread = 120.0
+gravity = Vector2(0, -50)
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+damping_min = 40.0
+damping_max = 60.0
+scale_amount_min = 3.0
+scale_amount_max = 6.0
+color = Color(0.576471, 0.556863, 1, 1)
+color_ramp = SubResource("Gradient_qaynk")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(544, 281)
+texture = ExtResource("2_00bik")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 358.0
+offset_right = 679.0
+offset_bottom = 385.0
+value = 100.0
+allow_greater = true
+show_percentage = false
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 454.0
+offset_top = 412.0
+offset_right = 623.0
+offset_bottom = 456.0
+text = "Level up"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 362.0
+offset_right = 601.0
+offset_bottom = 388.0
+text = "0/1"
+horizontal_alignment = 1
+
+[node name="Tasks" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1008.0
+offset_top = 597.0
+offset_right = 1142.0
+offset_bottom = 637.0
+text = "Tasks"
+
+[node name="Building" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 861.0
+offset_top = 597.0
+offset_right = 995.0
+offset_bottom = 637.0
+text = "Building"

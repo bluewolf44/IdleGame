@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxjnwxac606pv"]
+
+[ext_resource type="Script" path="res://Text.gd" id="1_3dy0d"]
+
+[node name="Text" type="Node2D"]
+script = ExtResource("1_3dy0d")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
