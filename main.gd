@@ -42,7 +42,7 @@ func _process(delta:float)->void:
 	current_scene.update()
 
 func _ready()->void:
-	tasks.append(Task.new("Finding Rocks",10,[Result.new("xp",2),Result.new("Rock",1)]))
+	tasks.append(Task.new("Finding Rocks",10,[Result.new("Xp",2,Color("10ade6")),Result.new("Rock",1,Color("b5484c"))]))
 
 func time_to_str(time:float)-> String:
 	var str = ""
@@ -55,7 +55,7 @@ func time_to_str(time:float)-> String:
 
 func add_result(results:Array[Result]):
 	for r in results:
-		if r.name == "xp":
+		if r.name == "Xp":
 			total_xp += r.numb
 		if items.has(r.name):
 			items[r.name] += r.numb
@@ -66,5 +66,5 @@ func create_text(results:Array[Result],node:CanvasItem,position:Vector2):
 	for result in results:
 		var text := preload("res://Scenes/text.tscn").instantiate()
 		node.add_child(text)
-		text.create(result.name,result.color,position)
+		text.create(result.name+":"+str(result.numb),result.color,position)
 		await get_tree().create_timer(randf_range(0.3,1.0)).timeout

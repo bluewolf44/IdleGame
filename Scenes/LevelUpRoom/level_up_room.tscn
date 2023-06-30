@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwmrg74wbeote"]
+[gd_scene load_steps=6 format=3 uid="uid://dwmrg74wbeote"]
 
 [ext_resource type="Theme" uid="uid://c2pybm6ysbem3" path="res://tasks_room.tres" id="1_7w2i3"]
 [ext_resource type="Script" path="res://Scenes/LevelUpRoom/LevelUpRoom.gd" id="1_we2ch"]
 [ext_resource type="Texture2D" uid="uid://dea653ua0jp8o" path="res://icon.svg" id="2_00bik"]
+[ext_resource type="Texture2D" uid="uid://d0vp17j44uo0q" path="res://image.png" id="4_6bok3"]
 
 [sub_resource type="Gradient" id="Gradient_qaynk"]
 offsets = PackedFloat32Array(0.218543, 0.827815)
@@ -38,6 +39,7 @@ color = Color(0.576471, 0.556863, 1, 1)
 color_ramp = SubResource("Gradient_qaynk")
 
 [node name="Icon" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(544, 281)
 texture = ExtResource("2_00bik")
 
@@ -86,3 +88,8 @@ offset_top = 597.0
 offset_right = 995.0
 offset_bottom = 637.0
 text = "Building"
+
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(539, 271)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_6bok3")
