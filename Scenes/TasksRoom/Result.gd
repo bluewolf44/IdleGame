@@ -1,11 +1,9 @@
 extends Resource
 class_name Result
 
-var name : String
+var item : Item
 var numb : float
-var color : Color
 
-func _init(name:String,numb:float,color:=Color("ffffff"))->void:
-	self.name = name
+func _init(item:Item,numb:float)->void:
+	self.item = item
 	self.numb = numb
-	self.color = color

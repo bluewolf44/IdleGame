@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://3dpmq6al0pjh"]
 
-[ext_resource type="Script" path="res://Scenes/TasksRoom/tasks_room.gd" id="1_m4jwv"]
-[ext_resource type="Theme" uid="uid://c2pybm6ysbem3" path="res://tasks_room.tres" id="1_s7yco"]
+[ext_resource type="Theme" uid="uid://c2pybm6ysbem3" path="res://tasks_room.tres" id="1_qyb46"]
+[ext_resource type="Script" path="res://Scenes/TasksRoom/tasks_room.gd" id="2_t3631"]
 
 [node name="Tasks_room" type="Control"]
 layout_mode = 3
@@ -11,8 +11,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-theme = ExtResource("1_s7yco")
-script = ExtResource("1_m4jwv")
+theme = ExtResource("1_qyb46")
+script = ExtResource("2_t3631")
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

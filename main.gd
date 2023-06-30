@@ -6,7 +6,11 @@ var pre_xp := 0.0
 var level := 0
 
 var tasks := []
-var items := {}
+var tasks_dir : Dictionary
+var buildings := []
+var buildings_dir : Dictionary
+
+var items : Dictionary
 
 var current_scene : Control
 
@@ -42,7 +46,28 @@ func _process(delta:float)->void:
 	current_scene.update()
 
 func _ready()->void:
-	tasks.append(Task.new("Finding Rocks",10,[Result.new("Xp",2,Color("10ade6")),Result.new("Rock",1,Color("b5484c"))]))
+	tasks.append(Task.new(
+		"Finding Rocks",5,
+		[
+			Result.new(add_item(Item.new("Xp",0,Color("10ade6"))),2),
+			Result.new(add_item(Item.new("Rock",0,Color("b5484c"))),1)
+		]
+	))
+	
+	buildings.append(Buildings.new(
+		"Obelisk",
+		[
+			Result.new(items["Rock"],2)
+		],
+		load("res://image (4).png")
+	))
+	
+	for n in range(tasks.size()):
+		tasks_dir[tasks[n].name] = n
+
+	for n in range(buildings.size()):
+		buildings_dir[buildings[n].name] = n
+
 
 func time_to_str(time:float)-> String:
 	var str = ""
@@ -53,18 +78,59 @@ func time_to_str(time:float)-> String:
 	str += str(int(time)%3600).pad_decimals(0).pad_zeros(2)
 	return str
 
-func add_result(results:Array[Result]):
+func add_result(results:Array[Result]) -> void:
 	for r in results:
-		if r.name == "Xp":
+		if r.item.name == "Xp":
 			total_xp += r.numb
-		if items.has(r.name):
-			items[r.name] += r.numb
-		else:
-			items[r.name] = r.numb
+		if items.has(r.item.name):
+			items[r.item.name].numb += r.numb
 
-func create_text(results:Array[Result],node:CanvasItem,position:Vector2):
+func remove_result(results:Array[Result])-> bool:
+	if !has_items(results):
+		return false
+	for r in results:
+		items[r.item.name].numb -= r.numb
+	return true
+
+func has_items(results:Array[Result])-> bool:
+	for r in results:
+		if !items.has(r.item.name):
+			print("doesn't have item"+r.item.name)
+			return false
+		if items[r.item.name].numb < r.numb:
+			return false
+	return true
+
+func create_text(results:Array[Result],node:CanvasItem,position:Vector2,speed:=Vector2i(randi_range(-5,5),randi_range(-20,-40))):
 	for result in results:
 		var text := preload("res://Scenes/text.tscn").instantiate()
 		node.add_child(text)
-		text.create(result.name+":"+str(result.numb),result.color,position)
+		text.create(result.item.name+":"+str(result.numb),result.item.color,position,speed)
 		await get_tree().create_timer(randf_range(0.3,1.0)).timeout
+
+func add_item(item:Item)->Item:
+	if items.has(item.name):
+		print("overlap "+item.name)
+		return item
+	items[item.name] = item
+	return item
+
+func build_building(building:Buildings)-> void:
+	if Main.remove_result(building.requirements):
+		building.level += 1
+		if is_instance_valid(building.list):
+			create_text(building.requirements,building.list,building.list.position+building.list.size/2,Vector2i(randi_range(-5,5),randi_range(20,40)))
+		for req in building.requirements:
+			req.numb += req.numb*2 + 1
+		
+		if is_instance_valid(building.list):
+			building.list.get_node("%Level").text = "Level"+str(building.level).pad_zeros(3)
+			for n in range(1,building.list.get_node("%Requirments").get_child_count()):
+				building.list.get_node("%Requirments").get_child(n).queue_free()
+			
+			for req in building.requirements:
+				var label = Label.new()
+				label.text = req.item.name + ":" + str(Main.items[req.item.name].numb).pad_zeros(4) + "/" + str(req.numb).pad_zeros(4)
+				label.modulate = req.item.color
+				building.list.get_node("%Requirments").add_child(label)
+		

@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw0casj3r6npk"]
+[gd_scene load_steps=3 format=3 uid="uid://dw0casj3r6npk"]
 
 [ext_resource type="Theme" uid="uid://c2pybm6ysbem3" path="res://tasks_room.tres" id="1_oadfq"]
 [ext_resource type="Script" path="res://Scenes/BuildingRoom/building_room.gd" id="2_414v2"]
-[ext_resource type="PackedScene" uid="uid://ddwsfttbbic2b" path="res://Scenes/BuildingRoom/Building_list.tscn" id="3_efxk6"]
 
 [node name="Building_room" type="Control"]
 layout_mode = 3
@@ -35,9 +34,6 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Control" parent="VBoxContainer/Control/ScrollContainer/Box1" instance=ExtResource("3_efxk6")]
-layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2

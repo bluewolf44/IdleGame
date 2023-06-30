@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ddwsfttbbic2b"]
 
-[ext_resource type="Texture2D" uid="uid://yyu716jyxvub" path="res://Scenes/TasksRoom/image (4).png" id="1_ma6n3"]
+[ext_resource type="Texture2D" uid="uid://yyu716jyxvub" path="res://image (4).png" id="1_25jsp"]
 
 [node name="Control" type="MarginContainer"]
 
@@ -26,7 +26,7 @@ layout_mode = 2
 mouse_filter = 1
 text = "Obelisk"
 
-[node name="Skill" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Level" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
@@ -51,7 +51,7 @@ size_flags_horizontal = 8
 [node name="Image" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("1_ma6n3")
+texture = ExtResource("1_25jsp")
 expand_mode = 3
 
 [node name="Button" type="Button" parent="MarginContainer/HBoxContainer"]

@@ -33,8 +33,8 @@ func mouse_input(task:Task):
 	$PanelContainer.position = task.list.position + Vector2(task.list.size.x+5,20)
 	for n in range(5):
 		if (task.result.size() > n):
-			get_node("%Item"+str(n)).text = task.result[n].name + ":" +str(task.result[n].numb)
-			get_node("%Item"+str(n)).modulate = task.result[n].color
+			get_node("%Item"+str(n)).text = task.result[n].item.name + ":" +str(task.result[n].numb)
+			get_node("%Item"+str(n)).modulate = task.result[n].item.color
 			get_node("%Item"+str(n)).visible = true
 		else:
 			get_node("%Item"+str(n)).visible = false

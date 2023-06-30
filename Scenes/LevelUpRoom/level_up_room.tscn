@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dwmrg74wbeote"]
 
-[ext_resource type="Theme" uid="uid://c2pybm6ysbem3" path="res://tasks_room.tres" id="1_7w2i3"]
-[ext_resource type="Script" path="res://Scenes/LevelUpRoom/LevelUpRoom.gd" id="1_we2ch"]
-[ext_resource type="Texture2D" uid="uid://dea653ua0jp8o" path="res://icon.svg" id="2_00bik"]
-[ext_resource type="Texture2D" uid="uid://d0vp17j44uo0q" path="res://image.png" id="4_6bok3"]
+[ext_resource type="Theme" uid="uid://c2pybm6ysbem3" path="res://tasks_room.tres" id="1_oampp"]
+[ext_resource type="Script" path="res://Scenes/LevelUpRoom/LevelUpRoom.gd" id="2_53rlc"]
+[ext_resource type="Texture2D" uid="uid://dea653ua0jp8o" path="res://icon.svg" id="3_u1oea"]
+[ext_resource type="Texture2D" uid="uid://d0vp17j44uo0q" path="res://image.png" id="4_8nhr8"]
 
 [sub_resource type="Gradient" id="Gradient_qaynk"]
 offsets = PackedFloat32Array(0.218543, 0.827815)
@@ -14,8 +14,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme = ExtResource("1_7w2i3")
-script = ExtResource("1_we2ch")
+theme = ExtResource("1_oampp")
+script = ExtResource("2_53rlc")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(538, 285)
@@ -41,7 +41,7 @@ color_ramp = SubResource("Gradient_qaynk")
 [node name="Icon" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(544, 281)
-texture = ExtResource("2_00bik")
+texture = ExtResource("3_u1oea")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
@@ -92,4 +92,4 @@ text = "Building"
 [node name="Image" type="Sprite2D" parent="."]
 position = Vector2(539, 271)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("4_6bok3")
+texture = ExtResource("4_8nhr8")
